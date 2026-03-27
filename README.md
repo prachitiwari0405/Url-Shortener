@@ -22,8 +22,6 @@ The goal of this project is not only functional URL shortening but also to demon
 ## Tech Stack
 
 ### Frontend
-
-* TypeScript
 * JavaScript
 * Modern UI components (mobile-first design)
 
