@@ -1,50 +1,147 @@
-# Welcome to your Expo app 👋
+# Distributed URL Shortener
 
-This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
+## Overview
 
-## Get started
+This project is a **URL Shortener application** designed with scalability and backend system design principles in mind. It allows users to convert long URLs into short, shareable links and provides basic analytics such as click counts and creation timestamps.
 
-1. Install dependencies
+The goal of this project is not only functional URL shortening but also to demonstrate **backend engineering fundamentals**, clean architecture, and readiness for future **distributed system scaling**.
 
-   ```bash
-   npm install
-   ```
+---
 
-2. Start the app
+## Key Features
 
-   ```bash
-   npx expo start
-   ```
+* Shorten long URLs into compact, unique links
+* Redirect short URLs to the original long URLs
+* Track basic analytics (click count, creation date)
+* RESTful backend API
+* Clean separation between frontend and backend
+* Basic automated tests
 
-In the output, you'll find options to open the app in a
+---
 
-- [development build](https://docs.expo.dev/develop/development-builds/introduction/)
-- [Android emulator](https://docs.expo.dev/workflow/android-studio-emulator/)
-- [iOS simulator](https://docs.expo.dev/workflow/ios-simulator/)
-- [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
+## Tech Stack
 
-You can start developing by editing the files inside the **app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
+### Frontend
 
-## Get a fresh project
+* TypeScript
+* JavaScript
+* Modern UI components (mobile-first design)
 
-When you're ready, run:
+### Backend
 
-```bash
-npm run reset-project
+* Python
+* REST APIs
+* URL hashing / code generation logic
+
+### Testing
+
+* Python-based backend tests
+
+---
+
+## Project Structure
+
+```
+distributed-url-shortener/
+├── backend/        # Backend services and API logic
+├── frontend/       # Frontend UI and client-side logic
+├── tests/          # Automated backend tests
+├── README.md       # Project documentation
+└── .gitignore
 ```
 
-This command will move the starter code to the **app-example** directory and create a blank **app** directory where you can start developing.
+---
 
-## Learn more
+## System Design Overview
 
-To learn more about developing your project with Expo, look at the following resources:
+The application is designed as a **stateless backend service**, which enables horizontal scaling in the future.
 
-- [Expo documentation](https://docs.expo.dev/): Learn fundamentals, or go into advanced topics with our [guides](https://docs.expo.dev/guides).
-- [Learn Expo tutorial](https://docs.expo.dev/tutorial/introduction/): Follow a step-by-step tutorial where you'll create a project that runs on Android, iOS, and the web.
+### Current Design
 
-## Join the community
+* Client sends a long URL to the backend
+* Backend generates a unique short code
+* Mapping is stored in persistent storage
+* Redirect endpoint resolves short code to original URL
 
-Join our community of developers creating universal apps.
+### Scalability Considerations (Planned)
+
+* Stateless backend services behind a load balancer
+* Hash-based or ID-based short code generation
+* Redis caching for frequently accessed URLs
+* Database sharding for large-scale URL storage
+* Rate limiting to prevent abuse
+
+---
+
+## API Endpoints (High Level)
+
+* `POST /shorten` – Create a short URL
+* `GET /{shortCode}` – Redirect to original URL
+* `GET /stats/{shortCode}` – Retrieve analytics
+
+---
+
+## Running the Project Locally
+
+### Backend
+
+1. Navigate to the backend directory
+2. Install dependencies
+3. Run the server
+
+### Frontend
+
+1. Navigate to the frontend directory
+2. Install dependencies
+3. Start the development server
+
+(Exact commands may vary based on environment setup.)
+
+---
+
+## Testing
+
+* Backend tests are available in the `tests/` directory
+* Tests validate URL creation, redirection, and edge cases
+
+To run tests:
+
+```
+python backend_test.py
+```
+
+---
+
+## Future Improvements
+
+* Authentication and user-specific URLs
+* Advanced analytics dashboard
+* Redis-based caching
+* Rate limiting and abuse prevention
+* Full CI/CD pipeline
+* Deployment on cloud infrastructure
+
+---
+
+## Why This Project
+
+This project was built to strengthen understanding of:
+
+* Backend API design
+* Scalable system architecture
+* Clean code organization
+* Practical system design concepts used in real-world engineering teams
+
+---
+#   Previwe of the project
+
+
+
+## Author
+
+**Prachi Tiwari**
+Final-year B.Tech CSE student (2026)
+
 
 - [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
 - [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
